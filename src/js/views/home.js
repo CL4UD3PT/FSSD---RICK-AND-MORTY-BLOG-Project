@@ -9,8 +9,8 @@ export const Home = () => {
 		<div className="text-center mt-5">
 			<h1>Rick and Morty Blog</h1>
 			<div className="row">
-				{store.characters.map(()=>{
-					return <Card />
+				{store.characters.map((char)=>{
+					return <Card key={char.id} character={char}/>
 				})}
 			</div>
 		</div>
