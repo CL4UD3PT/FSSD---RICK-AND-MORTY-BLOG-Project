@@ -8,7 +8,7 @@ export const Home = () => {
 	return(
 		<div className="text-center mt-5">
 			<h1>Rick and Morty Blog</h1>
-			<div className="row">
+			<div className="row d-flex flex-nowrap overflow-auto">
 				{store.characters.map((char)=>{
 					return <Card key={char.id} character={char}/>
 				})}
