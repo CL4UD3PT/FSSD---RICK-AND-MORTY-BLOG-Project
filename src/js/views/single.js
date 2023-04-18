@@ -6,21 +6,34 @@ import { Context } from "../store/appContext";
 export const Single = props => {
 	const { store, actions } = useContext(Context);
 	const params = useParams();
+	const [ item, setItem ] = useState({});
+
+	useEffect(() =>{
+		getSingleCharacter();
+	}, [])
+
+	const getSingleCharacter = async () => {
+		const response = await fetch("https://rickandmortyapi.com/api/character/" + params.theid);
+		const data = await response.json();
+		console.log(data); 
+		setItem(data);
+	}
+
+
 	return (
 		<div className="jumbotron">
-			<h1 className="display-4">This will show the demo element: {store.demo[params.theid].title}</h1>
-
-			<hr className="my-4" />
-
-			<Link to="/">
-				<span className="btn btn-primary btn-lg" href="#" role="button">
-					Back home
-				</span>
-			</Link>
+			<p>id: {item.id}</p>
+			<h1>Name: {item.name}</h1>
+			<p>status: {item.status}</p>
+			<p>species: {item.species}</p>
+			<p>type: {item.type}</p>
+			<p>gender: {item.gender}</p>
+			{/* <p>origin: {item.origin}</p>
+			<p>location: {item.location}</p> */}
+			<p>image: {item.image}</p>
+			{/* <p>episode: {item.episode}</p> */}
+			<p>url: {item.url}</p>
+			<p>created: {item.created}</p>
 		</div>
 	);
-};
-
-Single.propTypes = {
-	match: PropTypes.object
 };

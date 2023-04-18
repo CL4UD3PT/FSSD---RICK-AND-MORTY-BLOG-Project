@@ -1,7 +1,7 @@
 import React, {useContext} from "react";
 import "../../styles/home.css";
 import { Context } from "../store/appContext";
-import { CardCharacter } from "../component/cardCharacter";
+import { Card } from "../component/card";
 import { CardLocation } from "../component/cardLocation";
 import { CardEpisode } from "../component/cardEpisodes";
 
@@ -13,7 +13,7 @@ export const Home = () => {
 			<h2>Characters</h2>
 			<div className="row d-flex flex-nowrap overflow-auto">
 				{store.characters.map((char)=>{
-					return <CardCharacter key={char.id} data={char}/>
+					return <Card key={char.id} data={char}/>
 				})}
 			</div>
 			<h2>Locations</h2>
