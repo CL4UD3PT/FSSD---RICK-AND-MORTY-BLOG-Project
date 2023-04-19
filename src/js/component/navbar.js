@@ -1,14 +1,18 @@
 import React, {useContext} from "react";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
+import schwifty from "../../img/get-schwifty.png";
 
 export const Navbar = () => {
 	const {store, actions} = useContext(Context);
 
 	return (
 		<nav className="navbar navbar-light bg-light mb-3 p-2">
-			<Link to="/">
-				<h1 className="fs-4">Rick & Morty BlogWars</h1>
+			<Link className="link-logo" to="/">
+				<div className="d-flex align-items-center">
+					<img className="logo" src={schwifty} alt="..."/>
+					<h1 className="fs-2">Rick & Morty BlogWars</h1>
+				</div>
 			</Link>
 			<div className="btn-group">
 				<button type="button" className="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
