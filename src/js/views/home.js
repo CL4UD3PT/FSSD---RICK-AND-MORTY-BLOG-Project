@@ -2,30 +2,29 @@ import React, {useContext} from "react";
 import "../../styles/home.css";
 import { Context } from "../store/appContext";
 import { Card } from "../component/card";
-import { CardLocation } from "../component/cardLocation";
-import { CardEpisode } from "../component/cardEpisodes";
 
 export const Home = () => {
-	const {store, actions} = useContext(Context);
+	const {store} = useContext(Context);
+
 	return(
-		<div className="text-center mt-5">
+		<div className="container text-center mt-5">
 			<h1>Rick and Morty Blog</h1>
 			<h2>Characters</h2>
-			<div className="row d-flex flex-nowrap overflow-auto">
+			<div className="row d-flex flex-nowrap overflow-auto"> 
 				{store.characters.map((char)=>{
-					return <Card key={char.id} data={char}/>
+					return <Card key={char.id} data={char} cardType="character"/>
 				})}
 			</div>
 			<h2>Locations</h2>
 			<div className="row d-flex flex-nowrap overflow-auto">
 				{store.locations.map((location)=>{
-					return <CardLocation key={location.id} data={location}/>
+					return <Card key={location.id} data={location} cardType="location"/>
 				})}
 			</div>
 			<h2>Episodes</h2>
 			<div className="row d-flex flex-nowrap overflow-auto">
 				{store.episodes.map((episode)=>{
-					return <CardEpisode key={episode.id} data={episode}/>
+					return <Card key={episode.id} data={episode} cardType="episode"/>
 				})}
 			</div>
 		</div>

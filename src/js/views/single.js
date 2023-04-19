@@ -13,7 +13,7 @@ export const Single = props => {
 	}, [])
 
 	const getSingleCharacter = async () => {
-		const response = await fetch("https://rickandmortyapi.com/api/character/" + params.theid);
+		const response = await fetch("https://rickandmortyapi.com/api/" + params.thetype + "/" + params.theid);
 		const data = await response.json();
 		console.log(data); 
 		setItem(data);
@@ -22,18 +22,12 @@ export const Single = props => {
 
 	return (
 		<div className="jumbotron">
-			<p>id: {item.id}</p>
 			<h1>Name: {item.name}</h1>
-			<p>status: {item.status}</p>
-			<p>species: {item.species}</p>
-			<p>type: {item.type}</p>
-			<p>gender: {item.gender}</p>
-			{/* <p>origin: {item.origin}</p>
-			<p>location: {item.location}</p> */}
-			<p>image: {item.image}</p>
-			{/* <p>episode: {item.episode}</p> */}
-			<p>url: {item.url}</p>
-			<p>created: {item.created}</p>
+			{Object.keys(item).map((itemKey, index)=>{
+				if(typeof item[itemKey] != "object"){
+					return <p key={index}>{itemKey}: {item[itemKey]}</p>
+				}
+			})}
 		</div>
 	);
 };

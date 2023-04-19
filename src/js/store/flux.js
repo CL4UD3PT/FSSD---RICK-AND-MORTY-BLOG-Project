@@ -3,7 +3,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			characters: [],
 			locations: [],
-			episodes: []
+			episodes: [],
+			favorites: []
 		},
 		actions: {
 			getAllCharacters: async () => {
@@ -20,6 +21,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const response = await fetch("https://rickandmortyapi.com/api/episode");
 				const data = await response.json();
 				setStore({episodes: data.results});
+			},
+			setFavorites: (newFav) => {
+				const favorites = getStore().favorites;
+				if(!favorites.includes(newFav)){
+					setStore({favorites: [...favorites, newFav]});
+				}else{
+					setStore({favorites: favorites.filter((oldFav) => oldFav != newFav)})
+				}
 			}
 		}
 	};
