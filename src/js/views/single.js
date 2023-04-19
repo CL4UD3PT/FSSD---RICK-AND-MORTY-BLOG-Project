@@ -9,6 +9,8 @@ export const Single = props => {
 	const [ item, setItem ] = useState({});
 
 	useEffect(() =>{
+		console.log(params)
+		console.log("https://rickandmortyapi.com/api/" + params.thetype + "/" + params.theid)
 		getSingleCharacter();
 	}, [])
 

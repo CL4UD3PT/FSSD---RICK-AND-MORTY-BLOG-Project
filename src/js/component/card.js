@@ -14,10 +14,10 @@ export const Card = ({data, cardType}) => {
                     <p className="card-text">Status: {data.status}</p>
                     <p className="card-text">Species: {data.species}</p>
                     <div className="d-flex justify-content-between">
-                        <button className="btn btn-danger" onClick={()=>{
+                        <button className={`btn ${store.favorites.includes(data.name)?"btn-danger" : "btn-outline-danger"}`} onClick={()=>{
                             actions.setFavorites(data.name);
                         }}>+</button>
-                        <Link to={"/single/" + data.id + "/" + cardType}>
+                        <Link to={"/single/" + cardType + "/" + data.id}>
                             <button className="btn btn-primary">More info</button>
                         </Link>
                     </div>
