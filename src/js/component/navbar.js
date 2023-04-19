@@ -21,7 +21,7 @@ export const Navbar = () => {
 				<ul className="dropdown-menu dropdown-menu-end">
 					{store.favorites.length > 0 ?
 					<>{store.favorites.map((fav)=>{
-						return <li key={fav} className="dropdown-item" >{fav}<button className="btn btn-outline-danger" onClick={()=>{
+						return <li key={fav} className="dropdown-item d-flex justify-content-between" >{fav}<button className="btn btn-outline-danger" onClick={()=>{
 							actions.setFavorites(fav);
 						}}>x</button></li>
 					})}
