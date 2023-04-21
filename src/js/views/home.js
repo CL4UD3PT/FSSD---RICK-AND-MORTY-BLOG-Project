@@ -7,7 +7,7 @@ export const Home = () => {
 	const {store} = useContext(Context);
 
 	return(
-		<div className="container-fluid px-5 text-center mt-5">
+		<div className="container px-5 text-center mt-5">
 			<h2>Characters</h2>
 			<div className="row d-flex flex-nowrap overflow-auto"> 
 				{store.characters.map((char)=>{
