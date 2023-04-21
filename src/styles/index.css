@@ -10,3 +10,8 @@
 .logo{
     width: 7em;
 }
+
+.fav-btn,
+.fav-btn:active {
+    border: 0 !important;
+}
