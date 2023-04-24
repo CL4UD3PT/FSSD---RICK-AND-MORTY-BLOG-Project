@@ -6,13 +6,34 @@ export const Card = ({data, cardType}) => {
     const {store, actions} = useContext(Context);
 
     return (
-        <div className="card mx-2 p-0" style={{width: "18rem"}}>
-            <img src={data.image} className="card-img-top" alt="..."/>
+        <div className="col-4">
+            <div className="card m-2 p-0">
+            {data.image ? <img src={data.image} className="card-img-top" alt="..."/> : null}
                 <div className="card-body">
                     <h5 className="card-title">{data.name}</h5>
-                    <p className="card-text">Gender: {data.gender}</p>
-                    <p className="card-text">Status: {data.status}</p>
-                    <p className="card-text">Species: {data.species}</p>
+
+                    {/* Characters */}
+                    {data.gender
+                    ?<>
+                    <p className="card-text"><strong>Gender:</strong> {data.gender}</p>
+                    <p className="card-text"><strong>Status:</strong> {data.status}</p>
+                    <p className="card-text"><strong>Species:</strong> {data.species}</p>
+                    </>: null}
+
+                    {/* Locations */}
+                    {data.dimension
+                    ?<>
+                    <p className="card-text"><strong>Type:</strong> {data.type}</p>
+                    <p className="card-text"><strong>Dimension:</strong> {data.dimension}</p>
+                    </>: null}
+
+                    {/* Episodes */}
+                    {data.air_date
+                    ?<>
+                    <p className="card-text"><strong>Air date:</strong> {data.air_date}</p>
+                    <p className="card-text"><strong>Episode</strong>: {data.episode}</p>
+                    </>: null}
+
                     <div className="d-flex justify-content-between align-items-center">
                         <button className={`btn fav-btn fs-4 ${store.favorites.includes(data.name)?"text-danger" : "text-secondary"}`} onClick={()=>{
                             actions.setFavorites(data.name);
@@ -23,5 +44,6 @@ export const Card = ({data, cardType}) => {
                     </div>
                 </div>
         </div>
+    </div>
     );
 };

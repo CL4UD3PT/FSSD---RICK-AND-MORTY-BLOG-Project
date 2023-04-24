@@ -17,14 +17,14 @@ export const Navbar = () => {
 				</Link>
 				<div className="btn-group">
 					<button type="button" className="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
-						Favorites {store.favorites.length}
+						Favorites <span class="badge text-bg-warning">{store.favorites.length}</span>
 					</button>
 					<ul className="dropdown-menu dropdown-menu-end " >
 						{store.favorites.length > 0 ?
 						<>{store.favorites.map((fav)=>{
-							return <li key={fav} className="dropdown-item d-flex justify-content-between" >{fav}<button className="btn btn-outline-danger" onClick={()=>{
+							return <li key={fav} className="dropdown-item d-flex justify-content-between align-items-center" >{fav}<button className="btn badge text-bg-warning" onClick={()=>{
 								actions.setFavorites(fav);
-							}}>x</button></li>
+							}}>X</button></li>
 						})}
 						</> : <li className="dropdown-item">Add a favorite</li>}
 					</ul>
