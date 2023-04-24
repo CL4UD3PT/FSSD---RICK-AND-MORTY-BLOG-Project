@@ -8,19 +8,34 @@ const getState = ({ getStore, getActions, setStore }) => {
 		},
 		actions: {
 			getAllCharacters: async () => {
-				const response = await fetch("https://rickandmortyapi.com/api/character");
-				const data = await response.json();
-				setStore({characters: data.results});
+				if (localStorage.getItem('characters')) {
+					setStore({characters: JSON.parse(localStorage.getItem('characters'))})
+				} else {
+					const response = await fetch("https://rickandmortyapi.com/api/character");
+					const data = await response.json();
+					localStorage.setItem('characters', JSON.stringify(data.results));
+					setStore({characters: JSON.parse(localStorage.getItem('characters'))});
+				}
 			},
 			getAllLocations: async () => {
-				const response = await fetch("https://rickandmortyapi.com/api/location");
-				const data = await response.json();
-				setStore({locations: data.results});
+				if (localStorage.getItem('locations')) {
+					setStore({locations: JSON.parse(localStorage.getItem('locations'))})
+				} else {
+					const response = await fetch("https://rickandmortyapi.com/api/location");
+					const data = await response.json();
+					localStorage.setItem('locations', JSON.stringify(data.results));
+					setStore({locations: JSON.parse(localStorage.getItem('locations'))});
+				}
 			},
 			getAllEpisodes: async () => {
-				const response = await fetch("https://rickandmortyapi.com/api/episode");
-				const data = await response.json();
-				setStore({episodes: data.results});
+				if (localStorage.getItem('episodes')) {
+					setStore({episodes: JSON.parse(localStorage.getItem('episodes'))})
+				} else {
+					const response = await fetch("https://rickandmortyapi.com/api/episode");
+					const data = await response.json();
+					localStorage.setItem('episodes', JSON.stringify(data.results));
+					setStore({episodes: JSON.parse(localStorage.getItem('episodes'))});
+				}
 			},
 			setFavorites: (newFav) => {
 				const favorites = getStore().favorites;
