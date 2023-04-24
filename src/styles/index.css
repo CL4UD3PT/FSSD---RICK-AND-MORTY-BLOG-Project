@@ -15,3 +15,15 @@
 .fav-btn:active {
     border: 0 !important;
 }
+
+.auto-search {
+    position: relative;
+}
+
+.dropdown-auto-search{
+    position: absolute;
+    background: white;
+}
+
+.dropdown-item {
+}

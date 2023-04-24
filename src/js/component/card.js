@@ -34,10 +34,12 @@ export const Card = ({data, cardType}) => {
                     <p className="card-text"><strong>Episode</strong>: {data.episode}</p>
                     </>: null}
 
+                    {/* Buttons */}
                     <div className="d-flex justify-content-between align-items-center">
-                        <button className={`btn fav-btn fs-4 ${store.favorites.includes(data.name)?"text-danger" : "text-secondary"}`} onClick={()=>{
-                            actions.setFavorites(data.name);
-                        }}><i className={`${store.favorites.includes(data.name) ? "fa-solid" : "fa-regular"} fa-heart`}></i></button>
+                        <button className={`btn fav-btn fs-4 ${store.favorites.includes(data.name)?"text-danger" : "text-secondary"}`}
+                            onClick={()=>{actions.setFavorites(data.name);}}>
+                            <i className={`${store.favorites.includes(data.name) ? "fa-solid" : "fa-regular"} fa-heart`}></i>
+                        </button>
                         <Link to={"/single/" + cardType + "/" + data.id}>
                             <button className="btn btn-primary btn-sm py-1">Show info</button>
                         </Link>
