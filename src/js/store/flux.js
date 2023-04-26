@@ -1,40 +1,42 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			characters: [],
-			locations: [],
-			episodes: [],
-			favorites: []
+			character: [],
+			location: [],
+			episode: [],
+			favorites: [],
+			dataFiltered: [],
+			schema: ''
 		},
 		actions: {
-			getAllCharacters: async () => {
-				if (localStorage.getItem('characters')) {
-					setStore({characters: JSON.parse(localStorage.getItem('characters'))})
+			getAllCharacter: async () => {
+				if (localStorage.getItem('character')) {
+					setStore({character: JSON.parse(localStorage.getItem('character'))})
 				} else {
 					const response = await fetch("https://rickandmortyapi.com/api/character");
 					const data = await response.json();
-					localStorage.setItem('characters', JSON.stringify(data.results));
-					setStore({characters: JSON.parse(localStorage.getItem('characters'))});
+					localStorage.setItem('character', JSON.stringify(data.results));
+					setStore({character: JSON.parse(localStorage.getItem('character'))});
 				}
 			},
-			getAllLocations: async () => {
-				if (localStorage.getItem('locations')) {
-					setStore({locations: JSON.parse(localStorage.getItem('locations'))})
+			getAllLocation: async () => {
+				if (localStorage.getItem('location')) {
+					setStore({location: JSON.parse(localStorage.getItem('location'))})
 				} else {
 					const response = await fetch("https://rickandmortyapi.com/api/location");
 					const data = await response.json();
-					localStorage.setItem('locations', JSON.stringify(data.results));
-					setStore({locations: JSON.parse(localStorage.getItem('locations'))});
+					localStorage.setItem('location', JSON.stringify(data.results));
+					setStore({location: JSON.parse(localStorage.getItem('location'))});
 				}
 			},
-			getAllEpisodes: async () => {
-				if (localStorage.getItem('episodes')) {
-					setStore({episodes: JSON.parse(localStorage.getItem('episodes'))})
+			getAllEpisode: async () => {
+				if (localStorage.getItem('episode')) {
+					setStore({episode: JSON.parse(localStorage.getItem('episode'))})
 				} else {
 					const response = await fetch("https://rickandmortyapi.com/api/episode");
 					const data = await response.json();
-					localStorage.setItem('episodes', JSON.stringify(data.results));
-					setStore({episodes: JSON.parse(localStorage.getItem('episodes'))});
+					localStorage.setItem('episode', JSON.stringify(data.results));
+					setStore({episode: JSON.parse(localStorage.getItem('episode'))});
 				}
 			},
 			setFavorites: (newFav) => {
@@ -44,6 +46,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}else{
 					setStore({favorites: favorites.filter((oldFav) => oldFav != newFav)})
 				}
+			},
+			setDataFiltered: (data, filterValue = ()=>{1 === 1}) => {
+				setStore({dataFiltered: data.filter(()=>filterValue)});
+				// setStore({dataFiltered: data});
+			},
+			setSchema: (schemaType) => {
+				setStore({schema: schemaType});
 			}
 		}
 	};

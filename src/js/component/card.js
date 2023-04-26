@@ -2,7 +2,7 @@ import React, {useContext} from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 
-export const Card = ({data, cardType}) => {
+export const Card = ({data}) => {
     const {store, actions} = useContext(Context);
 
     return (
@@ -40,7 +40,7 @@ export const Card = ({data, cardType}) => {
                             onClick={()=>{actions.setFavorites(data.name);}}>
                             <i className={`${store.favorites.includes(data.name) ? "fa-solid" : "fa-regular"} fa-heart`}></i>
                         </button>
-                        <Link to={"/single/" + cardType + "/" + data.id}>
+                        <Link to={"/single/" + store.schema + "/" + data.id}>
                             <button className="btn btn-primary btn-sm py-1">Show info</button>
                         </Link>
                     </div>
