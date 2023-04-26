@@ -47,8 +47,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 					setStore({favorites: favorites.filter((oldFav) => oldFav != newFav)})
 				}
 			},
-			setDataFiltered: (data, filterValue = ()=>{1 === 1}) => {
-				setStore({dataFiltered: data.filter(()=>filterValue)});
+			setDataFiltered: (data) => {
+			// setDataFiltered: (data, filterValue = ()=>{1 === 1}) => {
+				setStore({dataFiltered: data});
 				// setStore({dataFiltered: data});
 			},
 			setSchema: (schemaType) => {

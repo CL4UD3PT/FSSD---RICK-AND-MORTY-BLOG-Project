@@ -9,16 +9,9 @@ export const Navbar = () => {
 	const [autoComplete, setAutoComplete] = useState([]);
 
 	const handleSearchString = (searchString) => {
-		let find = [];
-		// encontrar uma forma de não mexer no array store.dataFiltered ou de devolver o valor dele.
-		if (searchString.length > 0){
-			find = store.dataFiltered.filter((char) => char.name.toLowerCase().includes(searchString.toLowerCase()));
-			// setAutoComplete(find);
-		} else {
-			find = store.dataFiltered;
-			// setAutoComplete('');
-		}
-		actions.setDataFiltered(store[store.schema].filter((char) => char.name.toLowerCase().includes(searchString.toLowerCase())));
+		let find = store[store.schema].filter((char) => char.name.toLowerCase().includes(searchString.toLowerCase()));
+		searchString.length == 0 ? setAutoComplete('') : setAutoComplete(find);
+		actions.setDataFiltered(find);
 	}
 
 	return (
