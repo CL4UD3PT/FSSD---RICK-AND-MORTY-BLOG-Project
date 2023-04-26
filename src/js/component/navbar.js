@@ -30,12 +30,12 @@ export const Navbar = () => {
 					<div className="auto-search">
 						<input type="text" onChange={(e)=>{setSearch(e.target.value)}} onKeyUp={(e)=>{handleSearchString(search)}} value={search}></input>
 					</div>
-					<div className="dropdown-auto-search">
-						{autoComplete.length > 0 ?
-							autoComplete.map((item) => <div key={item.id} className="dropdown-item">{item.name}</div>)
-							: null
-						}
-					</div>
+					{autoComplete.length > 0
+						?<div className="dropdown-auto-search">
+							{autoComplete.map((item) => <div key={item.id} className="dropdown-item">{item.name}</div>)}
+						</div>
+						:null
+					}
 				</div>
 
 				{/* FAVORITES */}
@@ -43,14 +43,15 @@ export const Navbar = () => {
 					<button type="button" className="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
 						Favorites <span className="badge text-bg-warning">{store.favorites.length}</span>
 					</button>
-					<ul className="dropdown-menu dropdown-menu-end " >
+					<ul className="dropdown-menu dropdown-menu-end">
 						{store.favorites.length > 0
-						?<>{store.favorites.map((fav)=>{
-							return <li key={fav} className="dropdown-item d-flex justify-content-between align-items-center" >{fav}<button className="btn badge text-bg-warning" onClick={()=>{
-								actions.setFavorites(fav);
-							}}>X</button></li>
-						})}</>
-						: <li className="dropdown-item">Add a favorite</li>}
+							?<>{store.favorites.map((fav)=>{
+								<li key={fav} className="dropdown-item d-flex justify-content-between align-items-center" >{fav}<button className="btn badge text-bg-warning"
+									onClick={()=>{actions.setFavorites(fav)}}>X</button>
+								</li>
+							})}</>
+							: <li className="dropdown-item">Add a favorite</li>
+						}
 					</ul>
 				</div>
 			</div>
