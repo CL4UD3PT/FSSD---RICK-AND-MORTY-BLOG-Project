@@ -7,9 +7,9 @@ export const Card = ({data}) => {
 
     return (
         <div className="col-4">
-            <div className="card m-2 p-0">
+            <div className="card">
             {data.image ? <img src={data.image} className="card-img-top" alt="..."/> : null}
-                <div className="card-body">
+                <div className="card-body" style={{minHeight: "13.5rem"}}>
                     <h5 className="card-title">{data.name}</h5>
 
                     {/* Characters */}
@@ -34,16 +34,17 @@ export const Card = ({data}) => {
                     <p className="card-text"><strong>Episode</strong>: {data.episode}</p>
                     </>: null}
 
-                    {/* Buttons */}
-                    <div className="d-flex justify-content-between align-items-center">
-                        <button className={`btn fav-btn fs-4 ${store.favorites.includes(data.name)?"text-danger" : "text-secondary"}`}
-                            onClick={()=>{actions.setFavorites(data.name);}}>
-                            <i className={`${store.favorites.includes(data.name) ? "fa-solid" : "fa-regular"} fa-heart`}></i>
-                        </button>
-                        <Link to={"/single/" + store.schema + "/" + data.id}>
-                            <button className="btn btn-primary btn-sm py-1">Show info</button>
-                        </Link>
-                    </div>
+                </div>
+
+                {/* Buttons */}
+                <div className="card-footer d-flex justify-content-between align-items-center">
+                    <button className={`btn fav-btn fs-4 ${store.favorites.includes(data.name)?"text-danger" : "text-secondary"}`}
+                        onClick={()=>{actions.setFavorites(data.name);}}>
+                        <i className={`${store.favorites.includes(data.name) ? "fa-solid" : "fa-regular"} fa-heart`}></i>
+                    </button>
+                    <Link to={"/single/" + store.schema + "/" + data.id}>
+                        <button className="btn btn-primary btn-sm py-1">Show info</button>
+                    </Link>
                 </div>
         </div>
     </div>

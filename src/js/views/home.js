@@ -23,7 +23,7 @@ export const Home = () => {
 					<span className={`fs-4 btn border-0 border-start border-3 rounded-0 ${store.schema === "episode" ? "border-primary" : "border-secondary-subtle"}`} onClick={() => {actions.setDataFiltered(store.episode); actions.setSchema('episode')}}>Episodes</span>
 				</div>
 				<div className="col-10">
-					<div className="row d-flex"> 
+					<div className="card-group row row-cols-1 row-cols-md-4 g-4"> 
 						{store.dataFiltered.map((element)=>{
 							return <Card key={element.id} data={element}/>
 						})}
