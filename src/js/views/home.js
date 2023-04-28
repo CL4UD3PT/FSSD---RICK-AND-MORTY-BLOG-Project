@@ -5,7 +5,6 @@ import { Card } from "../component/card";
 
 export const Home = () => {
 	const {store, actions} = useContext(Context);
-	// const [dataType, setDataType] = useState('character'); // mudar para appContext para que seja acessivel globalmente (para o search com autocomplete)
 
 	// TODO: maybe there's a workaround to assign store.character to dataFiltered without using useEffect()
 	useEffect(()=>{
@@ -23,7 +22,7 @@ export const Home = () => {
 					<span className={`fs-4 btn border-0 border-start border-3 rounded-0 ${store.schema === "episode" ? "border-primary" : "border-secondary-subtle"}`} onClick={() => {actions.setDataFiltered(store.episode); actions.setSchema('episode')}}>Episodes</span>
 				</div>
 				<div className="col-10">
-					<div className="card-group row row-cols-1 row-cols-md-4 g-4"> 
+					<div className="row d-flex"> 
 						{store.dataFiltered.map((element)=>{
 							return <Card key={element.id} data={element}/>
 						})}

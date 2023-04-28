@@ -39,6 +39,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 					setStore({episode: JSON.parse(localStorage.getItem('episode'))});
 				}
 			},
+			getAllFavorites: () => {
+				if(localStorage.getItem('favorites')) {
+					setStore({favorites: JSON.parse(localStorage.getItem('favorites'))})
+				} else {
+					localStorage.setItem('favorites', JSON.stringify([]));
+				}
+			},
 			setFavorites: (newFav) => {
 				const favorites = getStore().favorites;
 				if(!favorites.includes(newFav)){
@@ -48,9 +55,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 			setDataFiltered: (data) => {
-			// setDataFiltered: (data, filterValue = ()=>{1 === 1}) => {
 				setStore({dataFiltered: data});
-				// setStore({dataFiltered: data});
 			},
 			setSchema: (schemaType) => {
 				setStore({schema: schemaType});

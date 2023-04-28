@@ -1,10 +1,9 @@
 import React, { useState, useEffect, useContext } from "react";
-import PropTypes from "prop-types";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 
-export const Single = props => {
-	const { store, actions } = useContext(Context);
+export const Single = () => {
+	const { store } = useContext(Context);
 	const params = useParams();
 	const [ item, setItem ] = useState({});
 
