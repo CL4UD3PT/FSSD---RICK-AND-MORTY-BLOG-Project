@@ -15,10 +15,6 @@
     width: 4em;
 }
 
-.main-title {
-    min-height: 40px;
-}
-
 .fav-btn,
 .fav-btn:active {
     border: 0 !important;

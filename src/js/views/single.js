@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
+import { capitalizeFirst } from "../utils/myUtils";
 
 export const Single = () => {
 	const { store } = useContext(Context);
@@ -17,22 +18,17 @@ export const Single = () => {
 		setItem(data);
 	}
 
-	const capitalizeFirst = (word) => {
-		return word.charAt(0).toUpperCase() + word.slice(1);
-	}
-
-
 	return (
 		<div className="container">
 			<div className="card mb-3">
 				<div className="row g-0">
 						{item.image
-						? <div className="col-md-3">
+						? <div className="col-lg-4">
 							<img src={item.image} className="img-fluid h-100 rounded-start" alt="..."/>
 						</div>
 						: null}
-					<div className={item.image ? "col-md-9" : "col-md-12"}>
-						<h2 className="card-header">{capitalizeFirst(store.schema)}</h2>
+					<div className={item.image ? "col-lg-8" : "col-lg-12"}>
+						<h3 className="card-header">Rick & Morty {capitalizeFirst(store.schema)}</h3>
 						<div className="card-body">
 							<h3 className="card-title">{item.name}</h3>
 
