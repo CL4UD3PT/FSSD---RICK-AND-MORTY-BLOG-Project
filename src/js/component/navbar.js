@@ -5,12 +5,13 @@ import schwifty from "../../img/get-schwifty.png";
 
 export const Navbar = () => {
 	const {store, actions} = useContext(Context);
-	const [search, setSearch] = useState("");
-	const [autoComplete, setAutoComplete] = useState([]);
+	const [search, setSearch] = useState("")
+	const [searchSuggestionsOn, setSearchSuggestionsOn] = useState(true);
+	const [suggestionsData, setSuggestionsData] = useState([]);
 
 	const handleSearchString = (searchString) => {
 		let find = store[store.schema].filter((char) => char.name.toLowerCase().includes(searchString.toLowerCase()));
-		searchString.length == 0 ? setAutoComplete('') : setAutoComplete(find);
+		searchString.length == 0 ? setSuggestionsData('') : setSuggestionsData(find);
 		actions.setDataFiltered(find);
 	}
 
@@ -53,15 +54,18 @@ export const Navbar = () => {
 					{/* AUTO-SEARCH */}
 					<div className="input-group auto-search-container col-12 col-lg-3 mb-3 mb-lg-0">
 						<input type="text" className="form-control" onChange={(e)=>{setSearch(e.target.value)}} onKeyUp={(e)=>{handleSearchString(search)}} value={search} placeholder="Search..." aria-label="Search"></input>
-						<button type="button" className="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+						<button type="button" className="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
 							<span className="visually-hidden">Toggle Dropdown</span>
 						</button>
 						<ul className="dropdown-menu dropdown-menu-end">
-							<li className="dropdown-item">Search suggestions</li>
+							<li className="dropdown-item">
+								<input className="form-check-input me-2" onClick={()=>setSearchSuggestionsOn(!searchSuggestionsOn)} type="checkbox" value="" id="flexCheckDefault" checked={searchSuggestionsOn}/>
+								<label className="form-check-label" htmlFor="flexCheckDefault">Search suggestions on</label>
+							</li>
 						</ul>
-						{autoComplete.length > 0
+						{suggestionsData.length > 0 && searchSuggestionsOn
 							?<div className="dropdown-auto-search rounded shadow">
-								{autoComplete.map((item) => <div key={item.id} className="dropdown-item p-1">{item.name}</div>)}
+								{suggestionsData.map((item) => <div key={item.id} className="dropdown-item p-1">{item.name}</div>)}
 							</div>
 							:null
 						}
