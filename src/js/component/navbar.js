@@ -26,15 +26,18 @@ export const Navbar = () => {
 		<header className="p-3 mb-3 border-bottom">
 		    <div className="container">
       			<div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+					{/* LOGO */}
 					<Link className="link-logo d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none" to="/">
 						<div className="">
 							<img className="logo" src={schwifty} alt="..."/>
 						</div>
 					</Link>
 
-					<h3 className="main-title nav col-12 h-100 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0 ps-0 ps-lg-1">Rick & Morty BlogWars</h3>
+					{/* TITLE */}
+					<h3 className="main-title nav col-12 h-100 col-lg-auto me-lg-auto mb-2 justify-content-center mb-lg-0 ps-0 ps-lg-1">Rick & Morty BlogWars</h3>
 
-					<ul className="nav col-12 h-100 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+					{/* MENU */}
+					<ul className="nav col-12 h-100 col-lg-auto me-lg-auto mb-2 justify-content-center mb-lg-0">
 						<li><span className={`nav-link pb-0 px-2 border-primary fw-bold ${store.schema === "character" ? "link-dark border-bottom" : "link-secondary"}`} onClick={() => {actions.setDataFiltered(store.character); actions.setSchema('character')}}>Characters</span></li>
 						<li><span className={`nav-link pb-0 px-2 border-primary fw-bold ${store.schema === "location" ? "link-dark border-bottom" : "link-secondary"}`} onClick={() => {actions.setDataFiltered(store.location); actions.setSchema('location')}}>Locations</span></li>
 						<li><span className={`nav-link pb-0 px-2 border-primary fw-bold ${store.schema === "episode" ? "link-dark border-bottom" : "link-secondary"}`} onClick={() => {actions.setDataFiltered(store.episode); actions.setSchema('episode')}}>Episodes</span></li>
