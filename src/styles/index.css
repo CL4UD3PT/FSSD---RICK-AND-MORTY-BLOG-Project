@@ -2,13 +2,21 @@
     General Styles
 */
 
+/* body {
+    padding-top: 150px;
+} */
+
 .link-logo {
     text-decoration: none;
     color: black;
 }
 
 .logo{
-    width: 7em;
+    width: 4em;
+}
+
+.main-title {
+    min-height: 40px;
 }
 
 .fav-btn,
@@ -16,6 +24,8 @@
     border: 0 !important;
 }
 
+
+.auto-search-container,
 .auto-search {
     position: relative;
 }
@@ -25,4 +35,12 @@
     position: absolute;
     background: white;
     z-index: 100;
+    top: 50px;
+    left: 0;
+    right: 0;
+    /* border-radius: 4px; */
+}
+
+.my-badge {
+    box-shadow: 0 .065rem .15rem rgba(0,0,0,.8)!important;
 }
