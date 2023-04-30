@@ -6,7 +6,7 @@ export const Card = ({data}) => {
     const {store, actions} = useContext(Context);
 
     return (
-        <div className="col-sm-6 col-md-4 col-lg-3">
+        <div className="col-10 col-sm-6 col-md-4 col-lg-3 mx-auto mx-sm-0">
             <div className="card m-2 p-0">
             {data.image ? <img src={data.image} className="card-img-top" alt="..."/> : null}
                 <div className="card-body" style={{minHeight: "13.5rem"}}>
