@@ -2,9 +2,6 @@
     General Styles
 */
 
-/* body {
-    padding-top: 150px;
-} */
 
 .link-logo {
     text-decoration: none;
@@ -39,4 +36,8 @@
 
 .my-badge {
     box-shadow: 0 .065rem .15rem rgba(0,0,0,.8)!important;
+}
+
+.cursor-pointer {
+    cursor: pointer;
 }
