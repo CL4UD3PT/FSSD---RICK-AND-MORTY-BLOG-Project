@@ -28,9 +28,7 @@ export const Navbar = () => {
       			<div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
 					{/* LOGO */}
 					<Link className="link-logo d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none" to="/">
-						<div className="">
 							<img className="logo" src={schwifty} alt="..."/>
-						</div>
 					</Link>
 
 					{/* TITLE */}
@@ -70,7 +68,7 @@ export const Navbar = () => {
 						<ul className="dropdown-menu dropdown-menu-end">
 							<li className="dropdown-item">
 								<input className="form-check-input me-2" onChange={()=>setSearchSuggestionsOn(!searchSuggestionsOn)} type="checkbox" value="" id="flexCheckDefault" checked={searchSuggestionsOn}/>
-								<label className="form-check-label" htmlFor="flexCheckDefault">Search suggestions on</label>
+								<label className="form-check-label" htmlFor="flexCheckDefault">Turn on Suggestions</label>
 							</li>
 						</ul>
 						{suggestionsData.length > 0 && searchSuggestionsOn && !suggestionClicked
