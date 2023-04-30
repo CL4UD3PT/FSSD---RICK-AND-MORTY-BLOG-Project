@@ -17,7 +17,7 @@ export const Single = () => {
 		const data = await response.json();
 		setItem(data);
 	}
-
+	console.log(store.schema)
 	return (
 		<div className="container pb-5">
 			<div className="card col-10 col-sm-7 col-md-10 col-lg-8 mx-auto mb-3 rounded-0 rounded-bottom">
